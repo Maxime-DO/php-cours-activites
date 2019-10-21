@@ -12,32 +12,55 @@
         $students = ['Hulk', 'Iron Man', 'Wonder Woman', 'Black Widow', 'Malicia'];
      ?>
      <ul>
-       <?php //display the students here ?>
+       <?php
+       foreach ($students as $name) {
+         echo "$name, ";  
+       }
+       ?>
      </ul>
      <hr>
      <h1>Date du jour</h1>
      <form>
-
+     
        <!-- Instructions : Créer la liste de jour (en chiffres), de mois (en chiffres) et d'année en PHP. -->
        <label for="day">Day</label>
-       <select  name="day"><?php //list of day ?></select>
+       <select  name="day"><?php 
+       $days = range(1, 31, 1);
+       $months = range(1, 12, 1);
+       $years = range(2019, 1900, 1);
+
+       for ( $i = 0 ; $i < count($days) ; $i++ ) {
+         echo "<option>$days[$i]</option>";
+       }
+       ?></select>
        <label for="month">Month</label>
-       <select  name="month"><?php //list of month ?></select>
+       <select  name="month"><?php
+       for ( $i = 0 ; $i < count($months) ; $i++ ) {
+         echo "<option>$months[$i]</option>";
+       }
+       ?></select>
        <label for="year">Year</label>
-       <select  name="year"><?php //list of year ?></select>
+       <select  name="year"><?php 
+       for ( $i = 0 ; $i < count($years) ; $i++ ) {
+        echo "<option>$years[$i]</option>";
+       }
+       ?></select>
      </form>
      <hr>
      <!-- Instruction : Afficher ce bloc que si dans l'URL il y'a une variable sexe et que ça valeur vaut "fille" -->
-     <p>
-       Je suis une fille
-     </p>
      <!-- Instruction : Afficher ce bloc que si dans l'URL il y'a une variable sexe et que ça valeur vaut "garçon" -->
-     <p>
-       Je suis un garçon
-     </p>
      <!-- Instruction : Afficher ce bloc dans les autres cas -->
-     <p>
-       Je suis indéfini
-     </p>
+     <?php
+     switch ( $_REQUEST['sexe'] ) {
+       case 'fille' :
+        echo "<p>Je suis une fille</p>";
+        break;
+       case 'garçon' :
+        echo "<p>Je suis un garçon</p>";
+        break;
+       default :
+       echo "<p>Je suis indéfini</p>";
+     }
+     ?>
   </body>
 </html>
