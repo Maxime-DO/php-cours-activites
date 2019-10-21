@@ -111,51 +111,83 @@ echo '<br><br>';
 //Créer un tableau pour les mois de l'année et affiché tous les mois de Janvier à Décembre
 //modifier et/ou remplacer les éléments ci-dessous
 echo "8.Les mois depuis le debut de l'annee : <br>";
-$mois = [];
-for ($i = 0; $i < 0; $i) {
-    echo '';
+$mois = [
+'janvier',
+'février',
+'mars',
+'avril',
+'mai',
+'juin',
+'juillet',
+'août',
+'septembre',
+'octobre',
+'novembre',
+'décembre'
+];
+for ($i = 0; $i < count($mois); $i++) {
+    echo $mois[$i] . ' <br/>';
 }
 echo '<br><br>';
 
 //Afficher les mois de la fin de l'année jusqu'au début de l'année
 //modifier et/ou remplacer les éléments ci-dessous
 echo "9.Les mois depuis la fin de l'annee : <br>";
-for ($i = 0; $i < 0; $i) {
-    echo '';
+for ($i = count($mois); $i >= 0; $i--) {
+  echo $mois[$i] . ' <br/>';
 }
 echo '<br><br>';
 //----------------------------------------
 //Afficher le nom et prénoms des élèves de ce collège
-$college = array(
-  'Sixieme' => array(
-    array('Nom' => 'Payet', 'Prenom' => 'Mickael'),
-    array('Nom' => 'Hoareau', 'Prenom' => 'Christine'),
-    array('Nom' => 'Maillot', 'Prenom' => 'Laure'),
-  ),
-  'Cinquieme' => array(
-    array('Nom' => 'Bourdon', 'Prenom' => 'Didier'),
-    array('Nom' => 'Legitimus', 'Prenom' => 'Pascal'),
-    array('Nom' => 'Campan', 'Prenom' => 'Bernard'),
-    array('Nom' => 'Fois', 'Prenom' => 'Marina'),
-    array('Nom' => 'Floresti', 'Prenom' => 'Florence'),
-  ),
-  'Quatrieme' => array(
-    array('Nom' => 'Willis', 'Prenom' => 'Bruce'),
-    array('Nom' => 'Lawrence', 'Prenom' => 'Laurence'),
-    array('Nom' => 'Johannson', 'Prenom' => 'Scarlett'),
-    array('Nom' => 'Jackson', 'Prenom' => 'Samuel'),
-  ),
-);
+$college = [
+  'Sixieme' => [
+    ['Nom' => 'Payet', 'Prenom' => 'Mickael'],
+    ['Nom' => 'Hoareau', 'Prenom' => 'Christine'],
+    ['Nom' => 'Maillot', 'Prenom' => 'Laure'],
+  ],
+  'Cinquieme' => [
+    ['Nom' => 'Bourdon', 'Prenom' => 'Didier'],
+    ['Nom' => 'Legitimus', 'Prenom' => 'Pascal'],
+    ['Nom' => 'Campan', 'Prenom' => 'Bernard'],
+    ['Nom' => 'Fois', 'Prenom' => 'Marina'],
+    ['Nom' => 'Floresti', 'Prenom' => 'Florence'],
+  ],
+  'Quatrieme' => [
+    ['Nom' => 'Willis', 'Prenom' => 'Bruce'],
+    ['Nom' => 'Lawrence', 'Prenom' => 'Laurence'],
+    ['Nom' => 'Johannson', 'Prenom' => 'Scarlett'],
+    ['Nom' => 'Jackson', 'Prenom' => 'Samuel'],
+  ],
+];
 
 echo '10.Les eleves du college : <br>';
-//ajoutez votre code ici
+
+function afficher_liste_eleve ($ecole) {
+  foreach ($ecole as $classe => $eleves) {
+    echo '<br/>' . $classe . ' : <br/><br/>';
+    
+    foreach ($eleves as $eleve) {
+      echo $eleve['Nom'] .' : '. $eleve['Prenom'] . '<br/>';
+    }
+  }
+}
+afficher_liste_eleve($college);
+
 echo '<br><br>';
 
 //----------------------------------------
-//Afficher le nom et prénoms des élèves de ce collège
-//reprenez le tableau ci-dessus, ajoutez des éléves pour la classe de troisième et réaffichez tout
+//Reprenez le tableau ci-dessus, ajoutez des éléves pour la classe de troisième et réaffichez tout
 echo '11.Les eleves du college (avec les nouveaux arrivants): <br>';
-//ajoutez votre code ici
+
+$college['Troisième'] = [
+  ['Nom' => 'Patate', 'Prenom' => 'Max'],
+  ['Nom' => 'Patateux', 'Prenom' => 'Elsa'],
+  ['Nom' => 'Dupo', 'Prenom' => 'Philip'],
+  ['Nom' => 'Voly', 'Prenom' => 'Samuel'],
+];
+
+afficher_liste_eleve($college);
+
 echo '<br><br>';
 
 //----------------------------------------
@@ -196,15 +228,47 @@ $videotheque = array(
 );
 
 echo '12.Mes films : <br>';
-//ajoutez votre code ici
+
+function afficher_info_videotheque ($videotheque) {
+  foreach ($videotheque as $film) {
+    foreach ($film as $propriete => $valeur) {
+      echo "$propriete : ";
+      if (is_array($valeur) == false) {
+        echo "$valeur <br/>";
+      } else {
+        for ( $i = 0 ; $i < count($valeur) ; $i++ ) {
+          echo "$valeur[$i], ";
+        }
+        echo "<br/>";
+      }
+    }
+    echo "<br/>";
+  }
+}
+
+$mon_film =  [
+  'nom' => 'Wall-e',
+  'date' => 2007,
+  'realisateur' => 'Henry Force',
+  'acteurs' => [
+      'Gilles Fonda','Bill Balsam','Edward Fiedler','Anna J. Cobb',
+  ],
+];
+
+array_push($videotheque, $mon_film);
+
+afficher_info_videotheque($videotheque);
 echo '<br><br>';
 
 //----------------------------------------
 //Afficher toutes les informations de la vidéothèque
 //reprenez le tableau ci-dessus, ajoutez-y 3 de vos films préférés avec les mêmes
-//d'informations (nom, date, realisateur, acteurs) et en plus de ces informations
+//informations (nom, date, realisateur, acteurs) et en plus de ces informations
 //rajoutez un synopsis
 
 echo '13.Mes films : <br>';
-//ajoutez votre code ici
+
+
+
+afficher_info_videotheque($videotheque);
 echo '<br><br>';
