@@ -192,6 +192,7 @@ echo '<br><br>';
 
 //----------------------------------------
 //Afficher toutes les informations de la vidéothèque
+
 $videotheque = array(
   array(
     'nom' => 'Independance day',
