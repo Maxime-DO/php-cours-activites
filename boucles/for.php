@@ -247,7 +247,7 @@ function afficher_info_videotheque ($videotheque) {
   }
 }
 
-$mon_film =  [
+$mon_film_1 =  [
   'nom' => 'Wall-e',
   'date' => 2007,
   'realisateur' => 'Henry Force',
@@ -256,7 +256,24 @@ $mon_film =  [
   ],
 ];
 
-array_push($videotheque, $mon_film);
+$mon_film_2 =  [
+  'nom' => 'Billy',
+  'date' => 2007,
+  'realisateur' => 'Henry Force',
+  'acteurs' => [
+      'Gilles Fonda','Bill Balsam','Edward Fiedler','Anna J. Cobb',
+  ],
+];
+
+$mon_film_3 =  [
+  'nom' => 'Le film',
+  'date' => 2007,
+  'realisateur' => 'Henry Force',
+  'acteurs' => [
+      'Gilles Fonda','Bill Balsam','Edward Fiedler','Anna J. Cobb',
+  ],
+];
+array_push($videotheque, $mon_film_1, $mon_film_2, $mon_film_3);
 
 afficher_info_videotheque($videotheque);
 echo '<br><br>';
