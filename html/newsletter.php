@@ -20,11 +20,18 @@
 
 <?php
 
+/// TEST DATE ///
+// $date = getdate();
+
+//  foreach ( $date as $unity => $time ) {
+//      echo "$unity :  $time <br/>";
+//   }
+
   if (isset($_REQUEST['email'])) {
     // echo ($_REQUEST['email']);
     file_put_contents(__DIR__.'/listeEmail.txt', ($_REQUEST['email'] . "\n"), FILE_APPEND);
   } elseif (isset($_REQUEST['files'])) {
-    $liste_de_mail = file_get_contents(__DIR__.'/listeEmail.txt');
+    $liste_de_mail = file_get_contents(__DIR__.'/listeEmail.txt'); //return a string !!
     echo $liste_de_mail . "<br/>";
   }
 ?>
